@@ -1,0 +1,35 @@
+{
+  "name": "devpeople",
+  "version": "1.0.0",
+  "description": "A developer connecting platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "server": "nodemon run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arsh028/DevPeople.git"
+  },
+  "author": "Arsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arsh028/DevPeople/issues"
+  },
+  "homepage": "https://github.com/Arsh028/DevPeople#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "gravatar": "^1.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.10",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}
