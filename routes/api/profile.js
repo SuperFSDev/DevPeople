@@ -100,9 +100,44 @@ router.post(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
+      console.error('ERROR IN POST api/profile');
       res.status(500).send('Server Error');
     }
   }
 );
+
+// @route    GET api/profile
+// @desc     Get all profiles
+// @access   Public
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    console.error('ERROR IN GET api/profile 118');
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/profile/user/:user_id
+// @desc     Get profile by user id
+// @access   Public
+router.get('/user/:user_id', async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'avatar']);
+
+    if (!profile) {
+      res.status(400).json({ msg: 'no profile found' });
+    }
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    console.error('ERROR IN GET api/profile 118');
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
