@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Arsh028/DevPeople#readme",
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.2",
     "express": "^4.17.1",
@@ -27,6 +26,7 @@
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.10",
+    "normalize-url": "^5.3.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
