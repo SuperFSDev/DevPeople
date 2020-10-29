@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const normalizeURL = require('normalize-url');
 const { check, validationResult } = require('express-validator');
+const axios = require('axios');
+const config = require('config');
 
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
@@ -208,6 +210,7 @@ router.put(
 
       res.json(profile);
     } catch (err) {
+      console.error('ERROR IN DELETE api/profile/experience 211');
       console.error(err.message);
       res.status(500).send('Server Error');
     }
@@ -229,6 +232,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     await foundProfile.save();
     return res.status(200).json(foundProfile);
   } catch (error) {
+    console.error('ERROR IN DELETE api/profile/experience/:exp_id 233');
     console.error(error);
     return res.status(500).json({ msg: 'Server error' });
   }
@@ -286,6 +290,7 @@ router.put(
 
       res.json(profile);
     } catch (err) {
+      console.log('ERROR IN DELETE api/profile/experience/:exp_id 291');
       console.error(err.message);
       res.status(500).send('Server Error');
     }
@@ -305,8 +310,31 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     await foundProfile.save();
     return res.status(200).json(foundProfile);
   } catch (error) {
+    console.log('ERROR IN DELETE api/profile/education/:edu_id 311');
     console.error(error);
     return res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+// @route    GET api/profile/github/:username
+// @desc     Get user repos from Github
+// @access   Public
+router.get('/github/:username', async (req, res) => {
+  try {
+    const uri = encodeURI(
+      `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+    );
+    const headers = {
+      'user-agent': 'node.js',
+      Authorization: `token ${config.get('githubToken')}`,
+    };
+
+    const gitHubResponse = await axios.get(uri, { headers });
+    return res.json(gitHubResponse.data);
+  } catch (err) {
+    console.log('ERROR IN GET api/profile/github/:username 333');
+    console.error(err.message);
+    return res.status(404).json({ msg: 'No Github profile found' });
   }
 });
 
