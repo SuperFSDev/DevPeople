@@ -102,7 +102,7 @@ router.post(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      console.error('ERROR IN POST api/profile');
+      console.error('ERROR IN POST api/profile 105');
       res.status(500).send('Server Error');
     }
   }
