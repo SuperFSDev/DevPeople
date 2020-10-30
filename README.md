@@ -1,6 +1,6 @@
 # DevPeople
 
-This is a Node/Express/MongoDB social media platform for Developers that uses JWT authentication.This is the Fullstack application the API can be found [here](https://github.com/Arsh028/DevPeople-API). The platform would be available soon.
+This is a Node/Express/MongoDB social media platform for Developers that uses JWT authentication.This is the Fullstack application, the API can be found [here](https://github.com/Arsh028/DevPeople-API). The platform would be available soon.
 
 ## Getting Started
 
