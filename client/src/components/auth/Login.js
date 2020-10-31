@@ -19,36 +19,36 @@ const Login = () => {
   };
   return (
     <Fragment>
-      <h1 className="large text-primary">Sign In</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Sign into Your Account
+      <h1 className='large text-primary'>Sign In</h1>
+      <p className='lead'>
+        <i className='fas fa-user'></i> Sign into Your Account
       </p>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="form-group">
+      <form className='form' onSubmit={onSubmit}>
+        <div className='form-group'>
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
+            type='email'
+            placeholder='Email Address'
+            name='email'
             value={email}
             onChange={onChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className='form-group'>
           <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="6"
+            type='password'
+            placeholder='Password'
+            name='password'
+            minLength='6'
             value={password}
             onChange={onChange}
             required
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Log In" />
+        <input type='submit' className='btn btn-primary' value='Log In' />
       </form>
-      <p className="my-1">
-        Already have an account? <Link to="/login">Sign In</Link>
+      <p className='my-1'>
+        Don't have an account? <Link to='/register'>Sign Up</Link>
       </p>
     </Fragment>
   );
