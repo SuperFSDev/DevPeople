@@ -1,5 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { REGISTER_FAIL, REGISTER_SUCCESS } from '../actions/types';
+import {
+  REGISTER_FAIL,
+  REGISTER_SUCCESS,
+  USER_LOADED,
+  AUTH_ERROR,
+} from '../actions/types';
+import { setAlert } from '../actions/alert';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -10,8 +16,16 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload,
+      };
     case REGISTER_SUCCESS:
-      localStorage.setItem('token');
+      localStorage.setItem('token', action.payload.token);
+      //setAlert('success', 'success', 2000);
       return {
         ...state,
         ...action.payload,
@@ -20,6 +34,7 @@ export default function (state = initialState, action) {
       };
 
     case REGISTER_FAIL:
+    case AUTH_ERROR:
       localStorage.removeItem('token');
       return {
         ...state,
