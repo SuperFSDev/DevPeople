@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +24,7 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert('pass dont match', 'danger', 2000);
     } else {
-      console.log(formData);
+      register({ name, email, password });
     }
   };
   return (
@@ -40,7 +41,7 @@ const Register = ({ setAlert }) => {
             value={name}
             onChange={onChange}
             name='name'
-            required
+            //required
           />
         </div>
         <div className='form-group'>
@@ -50,7 +51,7 @@ const Register = ({ setAlert }) => {
             name='email'
             value={email}
             onChange={onChange}
-            required
+            //required
           />
           <small className='form-text'>
             This site uses Gravatar so if you want a profile image, use a
@@ -65,7 +66,7 @@ const Register = ({ setAlert }) => {
             minLength='6'
             value={password}
             onChange={onChange}
-            required
+            //required
           />
         </div>
         <div className='form-group'>
@@ -73,10 +74,10 @@ const Register = ({ setAlert }) => {
             type='password'
             placeholder='Confirm Password'
             name='password2'
-            minLength='6'
+            //minLength='6'
             value={password2}
             onChange={onChange}
-            required
+            //required
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
@@ -89,7 +90,8 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  alert: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
