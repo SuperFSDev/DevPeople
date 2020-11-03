@@ -5,7 +5,7 @@ import {
   USER_LOADED,
   AUTH_ERROR,
 } from '../actions/types';
-import { setAlert } from '../actions/alert';
+//import { setAlert } from '../actions/alert';
 
 const initialState = {
   token: localStorage.getItem('token'),
