@@ -4,6 +4,8 @@ import {
   REGISTER_SUCCESS,
   USER_LOADED,
   AUTH_ERROR,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
 } from '../actions/types';
 //import { setAlert } from '../actions/alert';
 
@@ -24,6 +26,7 @@ export default function (state = initialState, action) {
         user: action.payload,
       };
     case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
       localStorage.setItem('token', action.payload.token);
       //setAlert('success', 'success', 2000);
       return {
@@ -35,6 +38,7 @@ export default function (state = initialState, action) {
 
     case REGISTER_FAIL:
     case AUTH_ERROR:
+    case LOGIN_FAIL:
       localStorage.removeItem('token');
       return {
         ...state,
