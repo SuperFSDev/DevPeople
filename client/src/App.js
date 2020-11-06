@@ -13,6 +13,7 @@ import setAuthToken from '../src/utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
+import ProfileForm from './components/profile-forms/ProfileForm';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -34,6 +35,11 @@ const App = () => {
               <Route exact path='/register' component={register} />
               <Route exact path='/login' component={login} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/create-profile'
+                component={ProfileForm}
+              />
             </Switch>
           </div>
         </Fragment>
