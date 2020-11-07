@@ -5,8 +5,7 @@ import { setAlert } from './alert';
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('/profile/me');
-    console.log(res);
+    const res = await axios.get('api/profile/me');
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
