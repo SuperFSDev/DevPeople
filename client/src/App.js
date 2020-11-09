@@ -48,7 +48,7 @@ const App = () => {
                 path='/edit-profile'
                 component={EditProfile}
               />
-              {/* <PrivateRoute
+              <PrivateRoute
                 exact
                 path='/add-education'
                 component={AddEducation}
@@ -57,7 +57,7 @@ const App = () => {
                 exact
                 path='/add-experience'
                 component={AddExperience}
-              /> */}
+              />
             </Switch>
           </div>
         </Fragment>
