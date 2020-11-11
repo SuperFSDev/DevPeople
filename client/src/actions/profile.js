@@ -13,7 +13,7 @@ import { setAlert } from './alert';
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('api/profile/me');
+    const res = await axios.get('/api/profile/me');
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -89,7 +89,7 @@ export const createProfile = (formData, history, edit = false) => async (
         'Content-Type': 'application/json',
       },
     };
-    const res = await axios.post('api/profile', formData, config);
+    const res = await axios.post('/api/profile', formData, config);
 
     dispatch({
       type: GET_PROFILE,
@@ -117,7 +117,7 @@ export const createProfile = (formData, history, edit = false) => async (
 // Add Experience
 export const addExperience = (formData, history) => async (dispatch) => {
   try {
-    const res = await axios.put('api/profile/experience', formData);
+    const res = await axios.put('/api/profile/experience', formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -144,7 +144,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
 // Add Education
 export const addEducation = (formData, history) => async (dispatch) => {
   try {
-    const res = await axios.put('api/profile/education', formData);
+    const res = await axios.put('/api/profile/education', formData);
 
     dispatch({
       type: UPDATE_PROFILE,
